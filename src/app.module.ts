@@ -1,11 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './tuits.controller';
-import { AppService } from './app.service';
-import { TuitsController } from './tuits/tuits.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { TuitsModule } from './modules/tuits/tuits.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, TuitsController],
-  providers: [AppService],
+  imports: [TuitsModule, TypeOrmModule.forRoot({
+    type: 'mysql',
+    host: 'database',
+    port: 3306,
+    username: 'admin',
+    password: 'mysql-password',
+    database: 'tuitter_api_server',
+    entities: ['src/**/*.entity{ts,js}'],
+    autoLoadEntities: true,
+    synchronize: true
+  }), UsersModule],
 })
 export class AppModule {}
