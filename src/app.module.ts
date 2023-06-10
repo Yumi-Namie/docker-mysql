@@ -7,8 +7,8 @@ import { UsersModule } from './modules/users/users.module';
 @Module({
   imports: [TuitsModule, TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'database',
-    port: 3306,
+    host: 'localhost',
+    port: 3307,
     username: 'admin',
     password: 'mysql-password',
     database: 'tuitter_api_server',

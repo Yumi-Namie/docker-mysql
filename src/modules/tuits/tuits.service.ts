@@ -28,8 +28,8 @@ export class TuitsService {
 
     }
 
-    async createTuit({message} : CreateTuitDto) {
-        const tuit = this.tuitRepository.create({message});
+    async createTuit(message : CreateTuitDto) {
+        const tuit = this.tuitRepository.create(message);
         return this.tuitRepository.save(tuit);
     }
 

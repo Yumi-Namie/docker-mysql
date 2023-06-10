@@ -4,7 +4,7 @@ version: '3.1'
 services:
   db:
     image: mysql:5.6
-    container_name: database
+    container_name: my_container_database
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: mysql-password-root

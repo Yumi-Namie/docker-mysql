@@ -30,7 +30,7 @@ export class TuitsController {
 
     @Post()
     //@HttpCode(HttpStatus.NO_CONTENT)
-    createTuit(@Body('message') message: CreateTuitDto):Promise <Tuit> {
+    createTuit(@Body() message: CreateTuitDto):Promise <Tuit> {
         return this.tuitService.createTuit(message);
     }
 
