@@ -1,16 +1,16 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TuitsModule } from './modules/tuits/tuits.module';
 import { UsersModule } from './modules/users/users.module';
 
 require('dotenv').config();
-
-console.log(process.env.DATABASE_HOST);
-console.log(process.env.DATABASE_PORT);
-console.log(process.env.DATABASE_USERNAME);
-console.log(process.env.DATABASE_PASSWORD);
-console.log(process.env.DATABASE_NAME);
+let logger = new Logger('mylogger')
+logger.log(process.env.DATABASE_HOST);
+logger.log(process.env.DATABASE_PORT);
+logger.log(process.env.DATABASE_USERNAME);
+logger.log(process.env.DATABASE_PASSWORD);
+logger.log(process.env.DATABASE_NAME);
 
  @Module({
    imports: [

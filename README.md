@@ -67,3 +67,11 @@ export class AppModule {}
 ## Adminer (mysql-workbench)
 
 ![Alt text](image.png)
+
+
+git remote -v
+git add .
+git commit -m ""
+git push heroku main
+heroku open
+heroku logs --tail
