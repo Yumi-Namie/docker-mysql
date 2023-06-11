@@ -31,6 +31,9 @@ $ docker build -t tuitter-app .
 # Run the Docker container:
 $ docker run -p 3000:3000 --network tuitter-api_default tuitter-app
 
+# Execute
+$ nest start --watch
+
 ```
 The application should now be running on http://localhost:3000/tuits
 
