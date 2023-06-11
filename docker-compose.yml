@@ -56,23 +56,3 @@ volumes:
 #     restart: always
 #     ports:
 #       - 8080:8080
-
-# services:
-#   db:
-#     image: mysql:5.6
-#     container_name: my_container_database
-#     restart: always
-#     environment:
-#       MYSQL_ROOT_PASSWORD: mysql-password-root
-#       MYSQL_DATABASE: tuitter_api_server
-#       MYSQL_USER: admin
-#       MYSQL_PASSWORD: mysql-password
-#     volumes:
-#       - /var/lib/mysql/data
-#     ports:
-#       - 3307:3306
-#   adminer:
-#     image: adminer
-#     restart: always
-#     ports:
-#       - 8080:8080
