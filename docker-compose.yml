@@ -1,22 +1,56 @@
 #Use root/example as user/password credentials
-version: '3.1'
+
+version: '3.8'
 
 services:
-  db:
-    image: mysql:5.6
-    container_name: my_container_database
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: mysql-password-root
-      MYSQL_DATABASE: tuitter_api_server
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: mysql-password
-    volumes:
-      - /var/lib/mysql/data
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env:
+      PORT: 3000
     ports:
-      - 3307:3306
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    env:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: postgres-password
+      POSTGRES_DB: tuitter_api_server
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
   adminer:
     image: adminer
-    restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - db
+
+volumes:
+  pg_data:
+  
+# version: '3.1'
+
+# services:
+#   db:
+#     image: mysql:5.6
+#     container_name: my_container_database
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: mysql-password-root
+#       MYSQL_DATABASE: tuitter_api_server
+#       MYSQL_USER: admin
+#       MYSQL_PASSWORD: mysql-password
+#     volumes:
+#       - /var/lib/mysql/data
+#     ports:
+#       - 3307:3306
+#   adminer:
+#     image: adminer
+#     restart: always
+#     ports:
+#       - 8080:8080
