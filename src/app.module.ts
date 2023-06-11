@@ -26,6 +26,10 @@ logger.log(process.env.DATABASE_NAME);
        entities: ['dist/**/*.entity{.ts,.js}'],
        autoLoadEntities: true,
        synchronize: true,
+       ssl: {
+        ca: process.env.SSL_CERT,
+        rejectUnauthorized: false,
+       }
      }),
      UsersModule,
    ],
