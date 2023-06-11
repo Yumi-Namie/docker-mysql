@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TuitsModule } from './modules/tuits/tuits.module';
 import { UsersModule } from './modules/users/users.module';
 
+require('dotenv').config();
 
  @Module({
    imports: [
