@@ -3,23 +3,4 @@ build:
     web: Dockerfile
 
 run:
-  web:
-    image: tuitter-app
-    env:
-      PORT: 3000
-    ports:
-      - 3000:3000
-    depends_on:
-      - db
-
-  db:
-    image: postgres:13
-    env:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: postgres-password
-      POSTGRES_DB: tuitter_api_server
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-
-volumes:
-  pg_data:
+web: npm start

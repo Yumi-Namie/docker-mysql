@@ -1,16 +1,9 @@
-import { Module, Logger } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TuitsModule } from './modules/tuits/tuits.module';
 import { UsersModule } from './modules/users/users.module';
 
-require('dotenv').config();
-let logger = new Logger('mylogger')
-logger.log(process.env.DATABASE_HOST);
-logger.log(process.env.DATABASE_PORT);
-logger.log(process.env.DATABASE_USERNAME);
-logger.log(process.env.DATABASE_PASSWORD);
-logger.log(process.env.DATABASE_NAME);
 
  @Module({
    imports: [
@@ -26,10 +19,10 @@ logger.log(process.env.DATABASE_NAME);
        entities: ['dist/**/*.entity{.ts,.js}'],
        autoLoadEntities: true,
        synchronize: true,
-       ssl: {
+       ssl: process.env.SSL_ENABLED === 'true' ? {
         ca: process.env.SSL_CERT,
         rejectUnauthorized: false,
-       }
+      } : false,
      }),
      UsersModule,
    ],
